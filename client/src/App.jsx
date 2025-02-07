@@ -4,7 +4,7 @@ import { useState } from 'react';
 function App() {
 
   const [formData, setFormData] = useState({});
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,8 +22,8 @@ function App() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" id='username' placeholder='Username'        onChange={handleChange}/>
-      <input type="text" id='email' placeholder='Email'       onChange={handleChange}/>
+      <input type="text" id='username' placeholder='Username' onChange={handleChange}/>
+      <input type="text" id='email'    placeholder='Email'    onChange={handleChange}/>
       <button> Submit </button>
     </form>
   );

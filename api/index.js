@@ -1,32 +1,18 @@
 import express from 'express'; 
-import User from './models/user.model.js';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-
+import authRoutes from './routes/auth.route.js';
+import userRoutes from './routes/user.route.js';
 
 const app = express(); 
-app.use(cors({
-    origin : ['https://social-media-app-glennmark.vercel.app']
-}));
+dotenv.config();
+app.use(cors()); // app.use(cors({origin : ['https://social-media-app-glennmark.vercel.app']}));
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://Glennmark:Glennmark09@socialmediaapp.su1ai.mongodb.net/User?retryWrites=true&w=majority&appName=SocialMediaApp')
-.then(() => console.log('Connected'))
-.catch((err) => console.log(err))
-
-
-app.get("/", (req, res) => {
-    res.json("Hello");
-}); 
-
-app.post('/api', async (req, res) => {
-
-    const { username, email } = req.body;
-    const newUser = new User({username, email});
-
-    await newUser.save(); 
-    res.status(201).json({ message: 'User created successfully' });
-
-})
-
 app.listen(3000, () => console.log('Running at port 3000'));
+mongoose.connect(process.env.MONGO);
+
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes);
+
