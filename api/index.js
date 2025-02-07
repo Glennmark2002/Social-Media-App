@@ -6,9 +6,7 @@ import mongoose from 'mongoose';
 
 const app = express(); 
 app.use(cors({
-    origin : ['https://social-media-app-glennmark.vercel.app'],
-    methods: ['POST', 'GET'],
-    credentials: true
+    origin : ['https://social-media-app-glennmark.vercel.app']
 }));
 app.use(express.json())
 
