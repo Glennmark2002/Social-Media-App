@@ -5,7 +5,11 @@ import mongoose from 'mongoose';
 
 
 const app = express(); 
-app.use(cors());
+app.use(cors({
+    origin : ['https://social-media-app-glennmark.vercel.app'],
+    methods: ['POST', 'GET'],
+    credentials: true
+}));
 app.use(express.json())
 
 mongoose.connect('mongodb+srv://Glennmark:Glennmark09@socialmediaapp.su1ai.mongodb.net/User?retryWrites=true&w=majority&appName=SocialMediaApp')
