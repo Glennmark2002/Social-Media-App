@@ -2,7 +2,6 @@ import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import OAuth from "../components/OAuth";
-import axios from 'axios';
 
 function Signup() {
 
