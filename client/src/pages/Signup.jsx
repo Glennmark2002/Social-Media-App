@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import OAuth from "../components/OAuth";
+import axios from 'axios';
 
 function Signup() {
 
@@ -11,30 +12,39 @@ function Signup() {
     setFormData({...formData, [e.target.id] : e.target.value});
   }
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  
+  //   try {
+
+  //     const res = await fetch('/api/auth/signup', {
+  //       method : 'POST',
+  //       headers : { 'Content-Type' : 'application/json' },  
+  //       body : JSON.stringify(formData)
+  //     });
+  
+  //     const data = await res.json();  
+  //     console.log(data);
+  //     if(data.success === false) return
+      
+      
+
+  //     // navigate('/sign-in'); 
+      
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  
-    try {
+    const res = await axios.post('http://localhost:3000/api/auth/signup', formData); 
 
-      const res = await fetch('/api/auth/signup', {
-        method : 'POST',
-        headers : { 'Content-Type' : 'application/json' },  
-        body : JSON.stringify(formData)
-      });
-  
-      const data = await res.json();  
-      console.log(data);
-      if(data.success === false) return
-      
-      
+    console.log(res.data);
 
-      // navigate('/sign-in'); 
-      
-    } catch (error) {
-      console.log(error)
-    }
-  
   }
 
   return (
