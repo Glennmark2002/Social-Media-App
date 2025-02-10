@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import OAuth from "../components/OAuth";
@@ -7,44 +8,20 @@ import axios from 'axios';
 function Signup() {
 
   const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id] : e.target.value});
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  
-  //   try {
-
-  //     const res = await fetch('/api/auth/signup', {
-  //       method : 'POST',
-  //       headers : { 'Content-Type' : 'application/json' },  
-  //       body : JSON.stringify(formData)
-  //     });
-  
-  //     const data = await res.json();  
-  //     console.log(data);
-  //     if(data.success === false) return
-      
-      
-
-  //     // navigate('/sign-in'); 
-      
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post('http://localhost:3000/api/auth/signup', formData); 
+    const res = await axios.post('http://localhost:3000/api/auth/signup', formData);     
+    
+    if(res.success === false) return
 
-    console.log(res.data);
-
+    navigate('/sign-in');
   }
 
   return (
@@ -57,6 +34,10 @@ function Signup() {
         <Input type='password' placeholder='Confirm Password' id='confirmPassword' onChange={handleChange} />
         <Button text='Create' />
         <OAuth />
+        <div className="pl-2 flex max-w-sm w-full gap-2">
+          <p>Have an Account?</p>
+          <Link to='/sign-in' className='text-blue-500'> Sign-in </Link>
+        </div>
       </form>
     </div>
   );
