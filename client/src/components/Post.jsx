@@ -24,7 +24,8 @@ function Post({ post }) {
 
   const fetchComments = async () => {
 
-    const res = await axios.get(`https://social-media-app-gje5.vercel.app/post/comment/${post._id}`);
+    const res = await axios.get(`https://social-media-app-gje5.vercel.app/api/post/comment/${post._id}`);
+    console.log(res)
     setComments(res.data);
   }
 
