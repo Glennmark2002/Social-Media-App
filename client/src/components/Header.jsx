@@ -20,7 +20,7 @@ function Header() {
 
 		try {
 			setLoading(true);
-			await axios.get('http://localhost:3000/api/auth/signout');
+			await axios.get('https://social-media-app-gje5.vercel.app/api/auth/signout');
 			dispatch(signOut());
 			setLoading(false);
 			
