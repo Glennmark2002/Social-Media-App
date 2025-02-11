@@ -17,7 +17,7 @@ function Post({ post }) {
 
   const handleLike = async () => {
 
-    const res = await axios.put(`http://localhost:3000/api/post/${post._id}/like`, { userId : currentUser._id });  
+    const res = await axios.put(`https://social-media-app-gje5.vercel.app/api/post/${post._id}/like`, { userId : currentUser._id });  
     setLikes(res.data.likes.length);
     setLiked(res.data.likes.includes(currentUser._id));
   }
