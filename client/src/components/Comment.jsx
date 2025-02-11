@@ -2,22 +2,18 @@ import { useState } from "react";
 import axios from 'axios';
 
 function Comment({ ref, post, currentUser, fetchComments }) {
-
   const [text, setText] = useState('');
   const handleChange = (e) => setText(e.target.value);
 
   const handleTextInput = async () => {
 
-    // axios.post(`http://localhost:3000/api/post/${post._id}`, { text, userId : currentUser._id });
+      // await axios.post(`http://localhost:3000/api/post/${post._id}`, { text, userId : currentUser._id });
 
-      axios.post(`https://social-media-app-gje5.vercel.app/api/post/${post._id}`, { text, userId : currentUser._id });
+      await axios.post(`https://social-media-app-gje5.vercel.app/api/post/${post._id}`, { text, userId : currentUser._id });
       setText('');
       let textArea = document.getElementById(post._id);
       textArea.value = '';
       fetchComments();
-      
- 
-    
   }
 
   return (
