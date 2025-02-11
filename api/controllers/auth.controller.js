@@ -98,6 +98,10 @@ export const google = async (req, res, next) => {
 
 }
 
+export const signout = async (req, res) => {
+  res.clearCookie('access_token').status(200).json('Signout Success');
+}
+
 function createCookie(token, rest, res) {
 
   const expires = new Date(Date.now() + 3600000); 

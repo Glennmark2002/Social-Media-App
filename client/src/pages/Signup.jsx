@@ -17,7 +17,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post('http://localhost:3000/api/auth/signup', formData);     
+    const res = await axios.post('https://social-media-app-gje5.vercel.app/api/auth/signup', formData);     
     
     if(res.success === false) return
 
