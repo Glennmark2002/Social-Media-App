@@ -44,9 +44,9 @@ function Signin() {
 				<Input type='password' placeholder='Password' id='password' onChange={handleChange} />
 				<Button text={loading ? <Loading /> : 'Sign-in'} />
 				<div className="pl-2 flex max-w-sm w-full gap-2">
-          <p> Don't have account? - </p>
-          <Link to='/sign-up' className='text-blue-500'> Sign up </Link>
-        </div>
+					<p> Don't have account? - </p>
+					<Link to='/sign-up' className='text-blue-500'> Sign up </Link>
+				</div>
 				<p className='text-center text-red-600'>{error ? error.message || 'Somehing went wrong' : ''}</p>
 			</form>
     </div>
